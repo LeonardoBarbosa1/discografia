@@ -9,34 +9,51 @@
         <li class="nav-item active btn btn-secondary btn-lg btn-dark text-right mt-5 ">
             <a class="nav-link" href="{{ route('album.create') }}">Cadastrar Álbum</a>
         </li>
+        <li class="nav-item active btn btn-secondary btn-lg btn-dark text-right mt-5 ">
+            <a class="nav-link" href="{{ route('faixa.create') }}">Cadastrar Faixa</a>
+        </li>
         
-    </div>             
+    </div>              
      
-    <div class="container" > 
+    <div class="container mt-5" > 
 
             <div class="row d-flex justify-content-center align-items-center " >
                 <div class="col-6">
                     
-                        <div class="bg-light bg-opacity-75 rounded p-5 align-items-center" >
-                            <table class="table table-borderless  mb-3">
+                        <div class="bg-light bg-opacity-75 rounded p-5 " >
+                            <table class="table table-borderless mb-3">
                             <thead>
                                 <tr>
                                 
                                     <th scope="col"><img  src="{{ asset('img/logo.png') }}" > </th>
-                                    <th class="h1 col-3" scope="col"> Discografia</th>
+                                    
+                                    
+                                    <th class="h1 d-flex justify-content-around" scope="col"> Discografia</th>
                                     
                                 </tr>
-                                
+                                <tr>
+                                    <div class="col-md-6 offset-md-3">
+                                        <form action="{{route("home.pesquisar")}}" method="post" class="d-flex">
+                                            @csrf
+                                            <th></th>
+                                            <th> <input class="form-control rounded mt-3" type="search" name="termo_pesquisa" placeholder="Digite sua pesquisa" aria-label="Pesquisar"> </th>
+                                            <th></th>
+                                            <th></th>
+                                            <th> <button class="btn btn-primary " type="submit">Buscar</button> </th>
+                                        </form>
+                                    </div>
+                                </tr>    
                             </thead>
                             
-                            <tbody >
+                            <tbody>
                                 @foreach ($albuns as $album )
                                     <tr >
-                                        <th > Álbum: {{$album->nome}} , {{$album->ano}}</th>
+                                        <th class="font-weight-bold"> Álbum: {{$album->nome}} , {{$album->ano}}</th>
                                     </tr>
                                     <tr >
                                         <th> Nº</th>
                                         <th> Faixa</th>
+                                        <th></th>
                                         <th> Duração</th>
                                     </tr>
                                     @foreach ($faixas as $faixa )
@@ -44,6 +61,7 @@
                                         @if ($faixa->album_id == $album->id)
                                             <td> {{$faixa->id}}</td>
                                             <td> {{$faixa->nome}}</td>
+                                            <td></td>
                                             <td> {{$faixa->duracao}}</td>
                                         @endif
                                             

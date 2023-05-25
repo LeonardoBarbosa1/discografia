@@ -13,13 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Auth::routes();
 
 Route::resource('/album', 'App\Http\Controllers\AlbumController');
 Route::resource('/faixa', 'App\Http\Controllers\FaixaController');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'pesquisar'])->name('home.pesquisar');
+Route::post('/home', [App\Http\Controllers\HomeController::class, 'pesquisar'])->name('home.pesquisar');
+
+
+
