@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Album;
+use App\Models\Faixa;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -17,8 +18,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('home');
+        $albuns = Album::paginate(3);
+        $faixas = Faixa::whereIn("album_id", $albuns->pluck('id'))->get();
+        
+        
+        return view('home',  ["albuns" => $albuns, "faixas" => $faixas, "request" => $request->all()]);
+        
+        
     }
 }

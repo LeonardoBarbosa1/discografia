@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Faixa;
 
 class Album extends Model
 {
@@ -14,4 +15,9 @@ class Album extends Model
         'nome',
         'ano'
     ];
+
+    public function faixa()
+    {
+        return $this->hasMany(Faixa::class,'album_id','id');
+    }
 }

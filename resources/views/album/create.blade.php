@@ -29,10 +29,10 @@
                                 <script>
                                 setTimeout(function() {
                                     document.getElementById('mensagem-sucesso').style.opacity = '0';
-                                }, 6000);
+                                }, 5000);
                                 </script>
                             @endpush 
-                        <h1>Cadastrar Album: </h1>
+                        <h1>Cadastrar Álbum: </h1>
                             <form  method="post" action="{{ route("album.store")}}">
                                 @csrf
                                 <div class="form">
@@ -44,7 +44,7 @@
                                         {{ $errors->has("nome") ? $errors->first("nome") : ""}}
                                     </div> 
                                     <div class="col-sm-10 mt-3">
-                                    <input type="text" name="nome" class="form-control mx-auto" value="{{ old("nome") }}" placeholder="Nome" >
+                                    <input type="text" name="nome" class="form-control mx-auto" value="{{ old("nome") }}" placeholder="Ex: Rei do Gado" >
                                     </div>
                                 </div>
                                     
@@ -57,14 +57,14 @@
                                         {{ $errors->has("ano") ? $errors->first("ano") : ""}}
                                     </div> 
                                     <div class="col-sm-10 mt-3">
-                                        <input type="text" class="form-control mx-auto" name="ano" value="{{ old("ano") }}" placeholder="Ano" >
+                                        <input type="text" class="form-control mx-auto" name="ano" value="{{ old("ano") }}" placeholder="Ex: 1961" >
                                     </div>
                                 </div>    
                                     
 
                                 <div class="form-group row">
                                     <div class="col-sm-10 mt-5 ">
-                                        <button type="submit" class="button-add btn px-5  btn-success">Cadastra</button>
+                                        <button type="submit" class="button-add btn px-5  btn-success">Cadastrar</button>
                                     </div>
                                 </div>
                                 </div>

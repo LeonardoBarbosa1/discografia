@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Album;
 use App\Models\Faixa;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,10 @@ class FaixaController extends Controller
      */
     public function index()
     {
-        //
+        $faixas = Faixa::paginate(10);
+        
+        return view("faixa.index", ["faixas" => $faixas, "request" => $faixas->all()]);
+    
     }
 
     /**
@@ -20,7 +24,8 @@ class FaixaController extends Controller
      */
     public function create()
     {
-        //
+        $albuns = Album::all();
+        return view("faixa.create", ["albuns" => $albuns]);
     }
 
     /**
@@ -28,7 +33,36 @@ class FaixaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $regras = [
+            "nome" => "required |min:3 |max:40",
+            "duracao" => " required |min:2 |max:8 ",
+            "album_id" => "exists:albuns,id"
+            
+        ];
+
+        $feedback = [
+            "required" => "O campo :attribute precisa ser preenchido",
+
+            "nome.min" => "O campo Nome precisa ter no mínimo 3 caracteres",
+            'nome.max' => "O campo Nome deve ter no máximo 40 caracteres",
+
+            
+
+            "duracao.min" => "O campo duracao está incorreto!",
+            "duracao.max" => "O campo duracao está incorreto!",
+
+            "album_id.exists" => "A Álbum informado não é válido"
+            
+            
+           
+            
+        ];
+        
+         
+
+        $request->validate($regras, $feedback);
+        Faixa::create($request->all());
+        return redirect()->route("faixa.create")->with('success', 'Faixa cadastrada com sucesso!');
     }
 
     /**
@@ -60,6 +94,7 @@ class FaixaController extends Controller
      */
     public function destroy(Faixa $faixa)
     {
-        //
+        $faixa->delete();
+        return redirect()->route("faixa.index")->with('success', 'Faixa excluída com sucesso!');
     }
 }

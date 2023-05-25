@@ -15,10 +15,10 @@
                     <a class="nav-link " href="{{ route('home') }}">Home</a>
                 </li>
                 <li class="nav-item h4">
-                    <a class="nav-link " href="{{ route('album.index') }}">Album</a>
+                    <a class="nav-link " href="{{ route('album.index') }}">Álbum</a>
                 </li>
                 <li class="nav-item h4">
-                    <a class="nav-link " href="#">Faixas</a>
+                    <a class="nav-link " href="{{ route('faixa.index') }}">Faixas</a>
                 </li>
                 
                 </ul>

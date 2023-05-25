@@ -20,5 +20,6 @@ Route::get('/', function () {
 //Auth::routes();
 
 Route::resource('/album', 'App\Http\Controllers\AlbumController');
+Route::resource('/faixa', 'App\Http\Controllers\FaixaController');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

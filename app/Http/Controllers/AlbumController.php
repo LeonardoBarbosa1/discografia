@@ -14,6 +14,7 @@ class AlbumController extends Controller
     {
         
         $albuns = Album::paginate(10);
+        
         return view("album.index", ["albuns" => $albuns, "request" => $request->all()]);
     }
 
@@ -88,7 +89,12 @@ class AlbumController extends Controller
      */
     public function destroy(Album $album)
     {
+
+        $album->faixa()->delete();
         $album->delete();
         return redirect()->route("album.index")->with('success', 'Album excluído com sucesso!');
     }
+
+    
+    
 }

@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
-@section("titulo","Album")
+@section("titulo","Faixa")
 @section('conteudo')
 
     <div class="menu">
 
         <li class="nav-item active btn btn-secondary btn-lg btn-dark text-right mt-5 ">
-            <a class="nav-link" href="{{ route('album.create') }}">Cadastrar Álbum</a>
+            <a class="nav-link" href="{{ route('faixa.create') }}">Cadastrar Faixa</a>
         </li>
         
     </div>            
-            
-     <div class="container" > 
+        
+        <div class="container" > 
 
             <div class="row d-flex justify-content-center align-items-center " >
                 <div class="col-6">
@@ -48,19 +48,23 @@
         <thead>
             <tr>
             
+            <th class="h3" scope="col">Nº</th>
             <th class="h3" scope="col">Nome</th>
-            <th class="h3" scope="col">Ano</th>
+            <th class="h3" scope="col">Duração</th>
+             <th class="h3" scope="col">Álbum</th>
             <th> </th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($albuns as $album )
+            @foreach ($faixas as $faixa )
                 <tr>
-                    <td> {{$album->nome}}</td>
-                    <td> {{$album->ano}}</td>
+                    <td> {{$faixa->id}}</td>
+                    <td> {{$faixa->nome}}</td>
+                    <td> {{$faixa->duracao}}</td>
+                    <td> {{$faixa->album->nome}}</td>
                     
                     <td> 
-                        <form method="post" action="{{ route("album.destroy", ["album" => $album->id])}}">
+                        <form method="post" action="{{ route("faixa.destroy", ["faixa" => $faixa->id])}}">
                             @method("DELETE")
                             @csrf
                             <button type="submit" class="btn btn-danger">Excluir</button>
@@ -76,17 +80,19 @@
         </table>
         
     </div> 
+
+
+
+
+
+    </div> 
     <div class="d-flex justify-content-center mt-4">
-            {{ $albuns->appends($request)->links()}}  
+            {{ $faixas->appends($request)->links()}}  
     <br>
     </div>
     <div class="d-flex justify-content-center mt-4 bg-light h5" style="width: 50%; margin-left: auto;margin-right: auto; background-color: #e9e9e9;  margin-top: 100px;">
-    Exibindo {{ $albuns->count()}} Álbuns de {{ $albuns->total()}} (de {{ $albuns->firstItem()}} a {{ $albuns->lastItem()}})
+    Exibindo {{ $faixas->count()}} Faixas de {{ $faixas->total()}} (de {{ $faixas->firstItem()}} a {{ $faixas->lastItem()}})
     </div>
-              
-    
-                
-     
 
 
-@endsection
+@endsection    

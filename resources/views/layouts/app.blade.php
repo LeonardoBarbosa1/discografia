@@ -26,7 +26,7 @@
     @vite(['resources/js/app.js'])
 
 </head>
-<body class="bg-image" >
+<body class="bg-image " >
     <div id="app">
         {{-- Menu --}}
         @include('layouts._partials.topo')
