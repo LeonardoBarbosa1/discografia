@@ -100,11 +100,6 @@
                                     @if ($faixas->isEmpty() || !$faixas->where('album_id', $album->id)->count())
                                         <tr>
                                             <td class="text-danger mt-4" colspan="4">Não há faixas cadastradas em {{$album->nome}}</td>
-                                             <td colspan="4">
-                                                <li class="nav-item active btn btn-success text-right">
-                                                    <a class="nav-link" href="{{ route('faixa.create') }}">cadastrar</i></a>
-                                                </li>
-                                            </td>
                                         </tr>
                                         
                                     @else
