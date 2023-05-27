@@ -26,6 +26,6 @@
 
 ### 8- Execute o comando: php artisan serve
 
-### 9- Acesse pelo browser o endereço que estara disponivel após o passo 8.
+### 9- Acesse pelo browser o endereço que estará disponível após o passo 8.
 Ex: http://127.0.0.1:8000
 
