@@ -16,7 +16,7 @@
 
 ### 4- Clone o projeto <br>
 -Acesse o CMD ou Terminar, entre na pasta que o projeto vai ficar. <br>
--Execute o comando: git clone https://github.com/LeonardoBarbosa1/discografia.git
+##### -Execute o comando: git clone https://github.com/LeonardoBarbosa1/discografia.git
 
 ### 5- Acesse o projeto na sua IDE.
 
