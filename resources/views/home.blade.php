@@ -58,9 +58,9 @@
                         <div>
                             <form action="{{ route('home-pesquisa') }}" method="post" class="d-flex">
                                 @csrf
-                                <div class="input-group">
+                                <div class="">
                                     <input class="form-control rounded" type="search" name="termo_pesquisa" placeholder="Digite sua pesquisa" aria-label="Pesquisar">
-                                    <button href="{{ route('album.create') }}" class="btn btn-primary btn-custom" type="submit">Pesquisar</button>
+                                    <button class="btn btn-primary btn-custom" type="submit">Pesquisar</button>
                                 </div>
                             </form>
                         </div>
