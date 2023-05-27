@@ -3,11 +3,11 @@
 
 ### 1- Precisa ter o MySQL, Apache e o PHP instalado <br>
     -Instalando o XAMMP já vem com tudo isso instalado<br>
-    -<a href="https://packagist.org/packages/laravel/framework">Clique aqui para Instalar</a><br>
+-<a href="https://packagist.org/packages/laravel/framework">Clique aqui para Instalar</a><br>
 
 
 ### 2- Inicie o XAMMP<br>
-    -<a href="https://packagist.org/packages/laravel/framework">Clique aqui ver como inicia</a><br>
+-<a href="https://packagist.org/packages/laravel/framework">Clique aqui ver como inicia</a><br>
 
 ### 3- Crie um Banco de dados chamado (discografia)<br>
     -No browser, consegue criar acessando (http://localhost/phpmyadmin/)<br>
