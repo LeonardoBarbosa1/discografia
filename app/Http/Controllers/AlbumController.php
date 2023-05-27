@@ -35,7 +35,7 @@ class AlbumController extends Controller
         //Colocando regras de validação para os campos
         $regras = [
             "nome" => "required |min:3 |max:40",
-            "ano" => " required |min:4 |max:4",
+            "ano" => "required |min:4 |max:4",
         ];
 
         //mensagens de feedback para validações de formulário
@@ -46,7 +46,8 @@ class AlbumController extends Controller
             'nome.max' => "O campo Nome deve ter no máximo 40 caracteres!",
 
             "ano.min" => "O campo Ano está incorreto, Necessário colocar 4 números!",
-            "ano.max" => "O campo Ano está incorreto, Necessário colocar 4 números!"
+            "ano.max" => "O campo Ano está incorreto, Necessário colocar 4 números!",
+           
         ];
 
         //validar os dados recebidos de uma requisição HTTP

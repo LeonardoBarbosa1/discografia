@@ -57,9 +57,22 @@
                                         {{ $errors->has("ano") ? $errors->first("ano") : ""}}
                                     </div> 
                                     <div class="col-sm-10 mt-3">
-                                        <input type="text" class="form-control mx-auto" name="ano" value="{{ old("ano") }}" placeholder="Ex: 1961" >
-                                    </div>
-                                </div>    
+                                        <input type="text" class="form-control mx-auto"  oninput="formatAno(this)"  name="ano" value="{{ old("ano") }}" placeholder="Ex: 1961" >
+                                        <script>
+                                            function formatAno(input) {
+                                                // Remove qualquer caractere não numérico
+                                                var value = input.value.replace(/\D/g, '');
+
+                                                // Limita o valor a 4 dígitos
+                                                if (value.length > 4) {
+                                                    value = value.substring(0, 4);
+                                                }
+
+                                                // Atualiza o valor do campo
+                                                input.value = value;
+                                            }
+                                        </script>
+                                    </div>    
                                     
 
                                 <div class="form-group row">
