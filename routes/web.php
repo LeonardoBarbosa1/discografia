@@ -17,8 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get("/", "App\Http\Controllers\HomeController@index")->name('home');
 
 //Rotas para barra de pesquisa
-Route::get("/home", "App\Http\Controllers\HomeController@pesquisa")->name('home.pesquisa');
-Route::post("/home", "App\Http\Controllers\HomeController@pesquisa")->name('home.pesquisa');
+Route::get("/home", "App\Http\Controllers\HomeController@index")->name('home-pesquisa');
+Route::post("/home", "App\Http\Controllers\HomeController@index")->name('home-pesquisa');
 
 Route::resource("/album", "App\Http\Controllers\AlbumController");
 Route::resource("/faixa", "App\Http\Controllers\FaixaController");

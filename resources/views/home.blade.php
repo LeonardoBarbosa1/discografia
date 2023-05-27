@@ -56,7 +56,7 @@
                     {{-- --}}
                     @else
                         <div>
-                            <form action="{{ route('home.pesquisa') }}" method="post" class="d-flex">
+                            <form action="{{ route('home-pesquisa') }}" method="post" class="d-flex">
                                 @csrf
                                 <div class="input-group">
                                     <input class="form-control rounded" type="search" name="termo_pesquisa" placeholder="Digite sua pesquisa" aria-label="Pesquisar">
@@ -69,9 +69,9 @@
                     @if($albuns->isEmpty())
                         {{--  SE NÃO TIVER REGISTROS --}}
 
-                        @if(Route::currentRouteName() == "home.pesquisa")  
+                        @if(Route::currentRouteName() == "home-pesquisa")  
                             <div>
-                                <form action="{{ route('home.pesquisa') }}" method="post" class="d-flex">
+                                <form action="{{ route('home-pesquisa') }}" method="post" class="d-flex">
                                     @csrf
                                     <div class="input-group">
                                         <input class="form-control rounded" type="search" name="termo_pesquisa" placeholder="Digite sua pesquisa" aria-label="Pesquisar">

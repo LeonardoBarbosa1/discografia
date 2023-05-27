@@ -20,22 +20,10 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $albuns = Album::paginate(5);
-        $faixas = Faixa::whereIn("album_id", $albuns->pluck('id'))->get();
-        
-        
-        return view('home',  ["albuns" => $albuns, "faixas" => $faixas, "request" => $request->all()]);
-        
-        
-    }
-
-    public function pesquisa(Request $request){
-
         $albuns = Album::where("nome", "like", "%".$request->input("termo_pesquisa")."%")->paginate(5);
-        
+
         $faixas = Faixa::whereIn("album_id", $albuns->pluck('id'))->get();
-        
-        return view("home", ["albuns" => $albuns, "faixas" => $faixas, "request" => $request->all() ]);
+
+        return view('home',  ["albuns" => $albuns, "faixas" => $faixas, "request" => $request->all()]);
     }
-   
 }
