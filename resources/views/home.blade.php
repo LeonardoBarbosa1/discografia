@@ -58,7 +58,7 @@
                         <div>
                             <form action="{{ route('home-pesquisa') }}" method="post" class="d-flex">
                                 @csrf
-                                <div class="">
+                                <div class="input-group">
                                     <input class="form-control rounded" type="search" name="termo_pesquisa" placeholder="Digite sua pesquisa" aria-label="Pesquisar">
                                     <button class="btn btn-primary btn-custom" type="submit">Pesquisar</button>
                                 </div>
