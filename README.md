@@ -3,11 +3,11 @@
 
 ### 1- Precisa ter o MySQL, Apache e o PHP instalado <br>
 -Instalando o XAMMP já vem com tudo isso instalado<br>
--<a href="https://www.apachefriends.org/pt_br/download.html">Clique aqui para Instalar</a><br>
+-<a href="https://www.apachefriends.org/pt_br/download.html" target="_blank">Clique aqui para Instalar</a><br>
 
 
 ### 2- Inicie o XAMMP<br>
--<a href="https://pt.wikihow.com/Iniciar-o-XAMPP-na-Inicializa%C3%A7%C3%A3o-do-Windows">Clique aqui ver como inicia</a><br>
+-<a href="https://pt.wikihow.com/Iniciar-o-XAMPP-na-Inicializa%C3%A7%C3%A3o-do-Windows" target="_blank">Clique aqui ver como inicia</a><br>
 
 ### 3- Crie um Banco de dados chamado (discografia)<br>
 -No browser, consegue criar acessando (http://localhost/phpmyadmin/)<br>
