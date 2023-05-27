@@ -15,7 +15,7 @@
             <div class="row d-flex justify-content-center align-items-center " >
                 <div class="col-6">
                     
-                        <div class="bg-light bg-opacity-75 border rounded p-5 align-items-center" >
+                    <div class="bg-light bg-opacity-75 border rounded p-5 align-items-center" >
 
                         <div class="msg-fornecedor" id="mensagem-sucesso" >   {{-- Mensagem caso o cadastro seja realizado com sucesso --}}
                             @if (session('success'))
@@ -81,13 +81,9 @@
                                     </div>
                                 </div>
                                 </div>
-
                             </form>
-                            
                         </div>
-                            
-                </div>
-                            
+                </div>             
             </div>
         </div>
 

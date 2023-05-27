@@ -102,7 +102,7 @@
                                             <td class="text-danger mt-4" colspan="4">Não há faixas cadastradas em {{$album->nome}}</td>
                                              <td colspan="4">
                                                 <li class="nav-item active btn btn-success text-right">
-                                                    <a class="nav-link" href="{{ route('faixa.create') }}"> <i class="bi bi-plus">+</i></a>
+                                                    <a class="nav-link" href="{{ route('faixa.create') }}"> Cadastre</i></a>
                                                 </li>
                                             </td>
                                         </tr>

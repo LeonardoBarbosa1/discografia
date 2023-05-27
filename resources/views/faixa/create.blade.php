@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section("titulo","Criar a Faixa")
+@section("titulo","Criar Faixa")
 @section('conteudo')
 
 <div class="menu">
@@ -10,7 +10,7 @@
     </li>
 
 </div>
-<div class="container mt-5">
+<div class="container mt-4">
 
     <div class="row d-flex justify-content-center align-items-center ">
         <div class="col-6">
@@ -38,6 +38,20 @@
                     @csrf
                     <div class="form">
 
+                        <div class="form-group row mt-3">
+                            <label class="">Álbum</label>
+                            <div style="color:red;">
+                                {{ $errors->has("album_id") ? $errors->first("album_id") : ""}}
+                            </div>
+                            <div class="col-sm-10 mt-3">
+                                <select class="form-select" name="album_id">
+                                    <option> -- Selecione o Álbum </option>
+                                    @foreach ($albuns as $album)
+                                    <option value="{{$album->id}}" {{ old("album_id") == $album->id ? "selected" : ""}}> {{$album->nome}} </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
 
                         <div class="form-group row mt-3 mr-5">
                             <label class="">Nome</label>
@@ -85,21 +99,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mt-3">
-                            <label class="">Álbum</label>
-                            <div style="color:red;">
-                                {{ $errors->has("album_id") ? $errors->first("album_id") : ""}}
-                            </div>
-                            <div class="col-sm-10 mt-3">
-                                <select class="form-select" name="album_id">
-                                    <option> -- Selecione o Álbum </option>
-                                    @foreach ($albuns as $album)
-                                    <option value="{{$album->id}}" {{ old("album_id") == $album->id ? "selected" : ""}}> {{$album->nome}} </option>
-                                    @endforeach
-
-                                </select>
-                            </div>
-                        </div>
+                        
 
 
                         <div class="form-group row">

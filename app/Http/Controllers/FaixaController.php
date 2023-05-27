@@ -35,7 +35,7 @@ class FaixaController extends Controller
         //Colocando regras de validação para os campos
         $regras = [
             "nome" => "required |min:3 |max:40",
-            "duracao" => " required |min:2 |max:8 ",
+            "duracao" => " required |min:5",
             "album_id" => "exists:albuns,id"
             
         ];
@@ -46,16 +46,9 @@ class FaixaController extends Controller
             "nome.min" => "O campo Nome precisa ter no mínimo 3 caracteres",
             'nome.max' => "O campo Nome deve ter no máximo 40 caracteres",
 
-            
-
-            "duracao.min" => "O campo duracao está incorreto!",
-            "duracao.max" => "O campo duracao está incorreto!",
+            "duracao.min" => "O campo duração está incorreto!",
 
             "album_id.exists" => "o Álbum informado não é válido"
-            
-            
-           
-            
         ];
         //validar os dados recebidos de uma requisição HTTP
         $request->validate($regras, $feedback);
