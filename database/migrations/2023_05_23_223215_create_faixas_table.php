@@ -16,10 +16,7 @@ return new class extends Migration
             $table->string("nome", 100);
             $table->string("duracao", 8);
             $table->unsignedBigInteger('album_id'); // Coluna de chave estrangeira
-
             $table->foreign('album_id')->references('id')->on('albuns'); // Restrição de chave estrangeira
-            
-
             $table->timestamps();
         });
     }

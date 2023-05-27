@@ -23,3 +23,12 @@
 .h2 {
     margin-left: 100px;
 }
+
+.btn-custom {
+    margin-left: 10px;
+    border-radius: 10px;
+}
+
+.principal-custom{
+    margin-top: 100px;
+}

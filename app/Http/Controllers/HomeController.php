@@ -29,9 +29,7 @@ class HomeController extends Controller
         
     }
 
-    public function pesquisar(Request $request){
-
-        
+    public function pesquisa(Request $request){
 
         $albuns = Album::where("nome", "like", "%".$request->input("termo_pesquisa")."%")->paginate(5);
         
@@ -39,4 +37,5 @@ class HomeController extends Controller
         
         return view("home", ["albuns" => $albuns, "faixas" => $faixas, "request" => $request->all() ]);
     }
+   
 }

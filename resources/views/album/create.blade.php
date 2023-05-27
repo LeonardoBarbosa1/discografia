@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
-@section("titulo","Album")
+@section("titulo","Criar Álbum")
 @section('conteudo')
 
     <div class="menu">
 
         <li class="nav-item active btn btn-secondary btn-lg btn-dark text-right mt-5 ">
-            <a class="nav-link px-5" href="{{ route('album.index') }}">Voltar</a>
+            <a class="nav-link px-5" href="{{ route('album.index') }}">Voltar a Ábuns</a>
         </li>
         
     </div> 
-    <div class="container" > 
+    <div class="container mt-5" > 
 
             <div class="row d-flex justify-content-center align-items-center " >
                 <div class="col-6">

@@ -13,10 +13,9 @@ class FaixaController extends Controller
      */
     public function index()
     {
+        //Colocando páginação de até 10 álbuns por tela
         $faixas = Faixa::paginate(10);
-        
         return view("faixa.index", ["faixas" => $faixas, "request" => $faixas->all()]);
-    
     }
 
     /**
@@ -33,13 +32,14 @@ class FaixaController extends Controller
      */
     public function store(Request $request)
     {
+        //Colocando regras de validação para os campos
         $regras = [
             "nome" => "required |min:3 |max:40",
             "duracao" => " required |min:2 |max:8 ",
             "album_id" => "exists:albuns,id"
             
         ];
-
+        //mensagens de feedback para validações de formulário
         $feedback = [
             "required" => "O campo :attribute precisa ser preenchido",
 
@@ -51,15 +51,13 @@ class FaixaController extends Controller
             "duracao.min" => "O campo duracao está incorreto!",
             "duracao.max" => "O campo duracao está incorreto!",
 
-            "album_id.exists" => "A Álbum informado não é válido"
+            "album_id.exists" => "o Álbum informado não é válido"
             
             
            
             
         ];
-        
-         
-
+        //validar os dados recebidos de uma requisição HTTP
         $request->validate($regras, $feedback);
         Faixa::create($request->all());
         return redirect()->route("faixa.create")->with('success', 'Faixa cadastrada com sucesso!');
@@ -94,7 +92,10 @@ class FaixaController extends Controller
      */
     public function destroy(Faixa $faixa)
     {
+        //Deletando Faixa
         $faixa->delete();
         return redirect()->route("faixa.index")->with('success', 'Faixa excluída com sucesso!');
     }
+
+   
 }

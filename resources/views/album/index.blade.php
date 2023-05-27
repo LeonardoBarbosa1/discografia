@@ -6,83 +6,123 @@
     <div class="menu">
 
         <li class="nav-item active btn btn-secondary btn-lg btn-dark text-right mt-5 ">
-            <a class="nav-link" href="{{ route('album.create') }}">Cadastrar Álbum</a>
+            <a class="nav-link" href="{{ route('album.create') }}">Cadastrar Novo Álbum</a>
         </li>
         
     </div>            
-            
-     <div class="container" > 
 
-            <div class="row d-flex justify-content-center align-items-center " >
-                <div class="col-6">
-                    
-                        <div class=" bg-opacity-50  align-items-center" >
+    {{-- MENSAGEM DE ÁLBUM EXCLUIDO COM SUCESSO --}}
+    <div class="container mt-5">
 
-                                <div class="msg-fornecedor" id="mensagem-sucesso" >   {{-- Mensagem caso o cadastro seja realizado com sucesso --}}
-                                    @if (session('success'))
-                                        <div class="alert alert-danger">
-                                            {{ session('success') }}
-                                        </div>
-                                    @endif
-                                </div> 
-                            {{-- deixando mensagens por 4 segundos --}}
-                                @push('scripts')
-                                    <script>
-                                    setTimeout(function() {
-                                        document.getElementById('mensagem-sucesso').style.opacity = '0';
-                                    }, 5000);
-                                    </script>
-                                @endpush 
-                        
-                                                                   
-                        </div> 
-                </div> 
-            </div>               
-    </div>       
-     
-    <div class="d-flex justify-content-center" style="width: 50%; margin-left: auto;margin-right: auto; background-color: #e9e9e9;  margin-top: 100px;" >
-     
-      
-        <table class="table table-striped table-bordered mb-3">
-       
-        <thead>
-            <tr>
-            
-            <th class="h3" scope="col">Nome</th>
-            <th class="h3" scope="col">Ano</th>
-            <th> </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($albuns as $album )
-                <tr>
-                    <td> {{$album->nome}}</td>
-                    <td> {{$album->ano}}</td>
-                    
-                    <td> 
-                        <form method="post" action="{{ route("album.destroy", ["album" => $album->id])}}">
-                            @method("DELETE")
-                            @csrf
-                            <button type="submit" class="btn btn-danger">Excluir</button>
-                            {{-- <a href=""> Deletar </a> --}}
-                        </form>    
-                    </td>
+        <div class="row d-flex justify-content-center align-items-center ">
+            <div class="col-6">
 
-                    
-                </tr>
-            
-            @endforeach
-        </tbody>
-        </table>
+                <div class=" bg-opacity-50  align-items-center">
+
+                    <div class="msg-fornecedor" id="mensagem-sucesso"> 
+                        @if (session('success'))
+                        <div class="alert alert-danger">
+                            {{ session('success') }}
+                        </div>
+                        @endif
+                    </div>
+                    {{-- deixando mensagens por 5 segundos --}}
+                    @push('scripts')
+                    <script>
+                        setTimeout(function() {
+                            document.getElementById('mensagem-sucesso').style.opacity = '0';
+                        }, 5000);
+
+                    </script>
+                    @endpush
+
+
+                </div>
+            </div>
+        </div>
+    </div>        
+    
+    <div class="container mt-5">
+
+        <div class="row d-flex justify-content-center align-items-center ">
+            <div class="col-6">
+
+
+                <div class="bg-light p-4 d-flex justify-content-between align-items-center">
+                    <div>
+                        <img src="{{ asset('img/logo.png') }}">
+                    </div>
+                    <div class="h1 text-right">Discografia</div>
+                </div>
         
-    </div> 
-    <div class="d-flex justify-content-center mt-4">
-            {{ $albuns->appends($request)->links()}}  
-    <br>
+    
+                {{-- VERIFICANDO SE TEM REGISTROS EM $albuns--}}
+                @if($albuns->isEmpty())
+                    {{--  SE NÃO TIVER REGISTROS --}}
+                    <div class="bg-light bg-opacity-75 p-5 ">
+                        <h2 class=" text-danger mt-4">Ainda não tem álbuns cadastrados</h2>
+                        <li class="nav-item active btn btn-success btn-lg text-right mt-5">
+                            <a class="nav-link" href="{{ route('album.create') }}">Clique aqui para cadastrar</a>
+                        </li>
+                    </div>    
+                @else   
+
+                    {{--  SE TIVER REGISTROS --}}  
+                    <table  class=" bg-light table table-striped table-bordered mb-3">
+       
+                        <thead>
+                            <tr>
+                                <th class="h3" scope="col">Nome</th>
+                                <th class="h3" scope="col">Ano</th>
+                                <th class="h3" scope="col">Excluir</th>
+                            </tr>
+                        </thead>
+            
+                        <tbody>
+                            @foreach ($albuns as $album )
+                            <tr>
+                                <td> {{$album->nome}}</td>
+                                <td> {{$album->ano}}</td>
+                                <td>
+                                    <form method="post" action="{{ route("album.destroy", ["album" => $album->id])}}">
+                                        @method("DELETE")
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger">Excluir</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                 @endif    
+        
+            </div>
+            @if($albuns->isEmpty())
+                {{--SE NÃO TIVER REGISTRO NÃO APARECER A EXIBIÇÃO DA QUANTIDADE --}}
+            @else
+                {{-- SE TIVER REGISTRO... APARECER A QUANTIDADE POR PÁGINA E TOTAL --}}
+                <div>
+                    {{ $albuns->appends($request)->links()}}  
+                    <br>
+                </div>
+                <div class="bg-light p-2 d-flex justify-content-center mt-2 bg-light h5" 
+                    style=" width: 48%;">
+                            
+                    Exibindo {{ $albuns->count()}} 
+                    {{--Verificado se a quantidade para definir se mostra no singular ou não --}}
+                    @if($albuns->count() == 1) 
+                        Álbum
+                    @else 
+                        Álbuns
+                    @endif        
+                    de {{ $albuns->total()}} 
+                    (de {{ $albuns->firstItem()}} a 
+                    {{ $albuns->lastItem()}})
+                </div>
+            @endif    
+        <div>    
     </div>
-    <div class="d-flex justify-content-center mt-4 bg-light h5" style="width: 50%; margin-left: auto;margin-right: auto; background-color: #e9e9e9;  margin-top: 100px;">
-    Exibindo {{ $albuns->count()}} Álbuns de {{ $albuns->total()}} (de {{ $albuns->firstItem()}} a {{ $albuns->lastItem()}})
-    </div>
+   
               
     
                 

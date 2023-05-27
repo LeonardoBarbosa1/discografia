@@ -12,9 +12,9 @@ class AlbumController extends Controller
      */
     public function index(Request $request)
     {
-        
+        //Colocando páginação de até 10 álbuns por tela
         $albuns = Album::paginate(10);
-        
+
         return view("album.index", ["albuns" => $albuns, "request" => $request->all()]);
     }
 
@@ -32,31 +32,27 @@ class AlbumController extends Controller
      */
     public function store(Request $request)
     {
+        //Colocando regras de validação para os campos
         $regras = [
             "nome" => "required |min:3 |max:40",
             "ano" => " required |min:4 |max:4",
         ];
 
+        //mensagens de feedback para validações de formulário
         $feedback = [
-            "required" => "O campo :attribute precisa ser preenchido",
+            "required" => "O campo :attribute precisa ser preenchido!",
 
-            "nome.min" => "O campo Nome precisa ter no mínimo 3 caracteres",
-            'nome.max' => "O campo Nome deve ter no máximo 40 caracteres",
-
-            
+            "nome.min" => "O campo Nome precisa ter no mínimo 3 caracteres!",
+            'nome.max' => "O campo Nome deve ter no máximo 40 caracteres!",
 
             "ano.min" => "O campo Ano está incorreto, Necessário colocar 4 números!",
             "ano.max" => "O campo Ano está incorreto, Necessário colocar 4 números!"
-            
-           
-            
         ];
-        
-         
 
+        //validar os dados recebidos de uma requisição HTTP
         $request->validate($regras, $feedback);
         Album::create($request->all());
-        return redirect()->route("album.create")->with('success', 'Album cadastrado com sucesso!');
+        return redirect()->route("album.create")->with('success', 'Álbum cadastrado com sucesso!');
     
     }
 
@@ -89,10 +85,12 @@ class AlbumController extends Controller
      */
     public function destroy(Album $album)
     {
-
+        //deletando faixas que tem relação com $album
         $album->faixa()->delete();
+        //deletando $album
         $album->delete();
-        return redirect()->route("album.index")->with('success', 'Album excluído com sucesso!');
+        
+        return redirect()->route("album.index")->with('success', 'Álbum excluído com sucesso!');
     }
 
     

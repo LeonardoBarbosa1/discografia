@@ -13,15 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Rotas para home
+Route::get("/", "App\Http\Controllers\HomeController@index")->name('home');
 
-//Auth::routes();
+//Rotas para barra de pesquisa
+Route::get("/home", "App\Http\Controllers\HomeController@pesquisa")->name('home.pesquisa');
+Route::post("/home", "App\Http\Controllers\HomeController@pesquisa")->name('home.pesquisa');
 
-Route::resource('/album', 'App\Http\Controllers\AlbumController');
-Route::resource('/faixa', 'App\Http\Controllers\FaixaController');
+Route::resource("/album", "App\Http\Controllers\AlbumController");
+Route::resource("/faixa", "App\Http\Controllers\FaixaController");
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'pesquisar'])->name('home.pesquisar');
-Route::post('/home', [App\Http\Controllers\HomeController::class, 'pesquisar'])->name('home.pesquisar');
-
-
-
+//redirecionando para a home caso o caminho acessado não esteja definido
+Route::fallback(function(){
+    return redirect()->route("home")->with("success", "URL não encontrada!");
+});
