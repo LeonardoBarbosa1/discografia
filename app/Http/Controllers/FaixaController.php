@@ -11,8 +11,9 @@ class FaixaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        
         //Colocando páginação de até 10 álbuns por tela
         $faixas = Faixa::paginate(10);
         return view("faixa.index", ["faixas" => $faixas, "request" => $faixas->all()]);

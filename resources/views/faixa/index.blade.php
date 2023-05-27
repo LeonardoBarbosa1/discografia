@@ -103,7 +103,7 @@
                 {{--SE NÃO TIVER REGISTRO NÃO APARECER A EXIBIÇÃO DA QUANTIDADE --}}
             @else
                 {{-- SE TIVER REGISTRO... APARECER A QUANTIDADE POR PÁGINA E TOTAL --}}
-                <div>
+                <div class="d-flex justify-content-center align-items-center ">
                     {{ $faixas->appends($request)->links()}}  
                     <br>
                 </div>

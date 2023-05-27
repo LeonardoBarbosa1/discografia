@@ -75,7 +75,7 @@
                                     @csrf
                                     <div class="input-group">
                                         <input class="form-control rounded" type="search" name="termo_pesquisa" placeholder="Digite sua pesquisa" aria-label="Pesquisar">
-                                        <button href="{{ route('album.create') }}" class="btn btn-primary btn-custom" type="submit">Pesquisar</button>
+                                        <button class="btn btn-primary btn-custom" type="submit">Pesquisar</button>
                                     </div>
                                 </form>
                             </div>  
@@ -102,7 +102,7 @@
                                             <td class="text-danger mt-4" colspan="4">Não há faixas cadastradas em {{$album->nome}}</td>
                                              <td colspan="4">
                                                 <li class="nav-item active btn btn-success text-right">
-                                                    <a class="nav-link" href="{{ route('faixa.create') }}"> Cadastre</i></a>
+                                                    <a class="nav-link" href="{{ route('faixa.create') }}">cadastrar</i></a>
                                                 </li>
                                             </td>
                                         </tr>
@@ -143,7 +143,7 @@
                     {{--SE NÃO TIVER REGISTRO NÃO APARECER A EXIBIÇÃO DA QUANTIDADE --}}
                 @else
                     {{-- SE TIVER REGISTRO... APARECER A QUANTIDADE POR PÁGINA E TOTAL --}}
-                    <div>
+                    <div class="d-flex justify-content-center align-items-center mt-3 ">
                         {{ $albuns->appends($request)->links()}}  
                         <br>
                     </div>

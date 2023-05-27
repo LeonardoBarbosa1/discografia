@@ -20,6 +20,7 @@ Route::get("/", "App\Http\Controllers\HomeController@index")->name('home');
 Route::get("/home", "App\Http\Controllers\HomeController@index")->name('home-pesquisa');
 Route::post("/home", "App\Http\Controllers\HomeController@index")->name('home-pesquisa');
 
+
 Route::resource("/album", "App\Http\Controllers\AlbumController");
 Route::resource("/faixa", "App\Http\Controllers\FaixaController");
 
