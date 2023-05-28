@@ -54,19 +54,48 @@
                     </div>
                     <div class="h1 text-right">Discografia</div>
                 </div>
-        
+
+                
     
                 {{-- VERIFICANDO SE TEM REGISTROS EM $albuns--}}
-                @if($albuns->isEmpty())
-                    {{--  SE NÃO TIVER REGISTROS --}}
-                    <div class="bg-light bg-opacity-75 p-5 ">
-                        <h2 class=" text-danger mt-4">Ainda não tem álbuns cadastrados</h2>
-                        <li class="nav-item active btn btn-success btn-lg text-right mt-5">
-                            <a class="nav-link" href="{{ route('album.create') }}">Clique aqui para cadastrar</a>
-                        </li>
-                    </div>    
+                @if($albuns->isEmpty()){{--  SE NÃO TIVER REGISTROS --}}
+                   {{-- Verificando se é uma pesquisa --}}
+                        @if(Route::currentRouteName() == "album-pesquisa")  
+                            {{-- Se for... Pesquisa não encontrada --}}
+                            <div class="bg-light p-3 ">
+                                <form action="{{ route('album-pesquisa') }}" method="post" class="d-flex bg-light">
+                                    @csrf
+                                    <div class="input-group">
+                                        <input class="form-control rounded" type="search" name="termo_pesquisa" placeholder="Digite sua pesquisa" aria-label="Pesquisar">
+                                        <button  class="btn btn-primary"  type="submit">Pesquisar</button>
+                                    </div>
+                                </form>
+                                <h2 class=" mt-4 text-danger ">Pesquisa não encontrada</h2>
+                             </div> 
+                             
+                        @else   
+                            {{--  SE NÃO TIVER REGISTROS --}}
+                            <div class="bg-light bg-opacity-75 p-5 ">
+                                <h2 class=" text-danger mt-4">Ainda não tem álbuns cadastradas</h2>
+                                <li class="nav-item active btn btn-success btn-lg text-right mt-5">
+                                    <a class="nav-link" href="{{ route('album.create') }}">Clique aqui para cadastrar</a>
+                                </li>
+                            </div>    
+                         @endif     
                 @else   
-
+                    @if($albuns->isEmpty())
+                    {{-- Tirando barra de pesquisa caso não tenha registros--}}
+                    @else
+                        <div class="bg-light p-3" >
+                            <form action="{{ route('album-pesquisa') }}" method="post" class="d-flex  bg-light">
+                                @csrf
+                                <div class="input-group">
+                                    <input class="form-control" type="search" name="termo_pesquisa" placeholder="Digite sua pesquisa" aria-label="Pesquisar">
+                                    <button class="btn btn-primary" type="submit">Pesquisar</button>
+                                </div>
+                            </form>
+                        </div>
+                    @endif
                     {{--  SE TIVER REGISTROS --}}  
                     <table  class=" bg-light table table-striped table-bordered mb-3">
        

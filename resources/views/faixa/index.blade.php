@@ -55,14 +55,43 @@
     
                 {{-- VERIFICANDO SE TEM REGISTROS EM $faixas--}}
                 @if($faixas->isEmpty())
-                    {{--  SE NÃO TIVER REGISTROS --}}
-                    <div class="bg-light bg-opacity-75 p-5 ">
-                        <h2 class=" text-danger mt-4">Ainda não tem faixas cadastradas</h2>
-                        <li class="nav-item active btn btn-success btn-lg text-right mt-5">
-                            <a class="nav-link" href="{{ route('faixa.create') }}">Clique aqui para cadastrar</a>
-                        </li>
-                    </div>    
+                    {{-- Verificando se é uma pesquisa --}}
+                        @if(Route::currentRouteName() == "faixa-pesquisa")  
+                            {{-- Se for... Pesquisa não encontrada --}}
+                            <div class="bg-light p-3 ">
+                                <form action="{{ route('faixa-pesquisa') }}" method="post" class="d-flex bg-light">
+                                    @csrf
+                                    <div class="input-group">
+                                        <input class="form-control rounded" type="search" name="termo_pesquisa" placeholder="Digite sua pesquisa" aria-label="Pesquisar">
+                                        <button  class="btn btn-primary"  type="submit">Pesquisar</button>
+                                    </div>
+                                </form>
+                                <h2 class=" mt-4 text-danger ">Pesquisa não encontrada</h2>
+                             </div> 
+                             
+                        @else  
+                            {{--  SE NÃO TIVER REGISTROS --}}
+                            <div class="bg-light bg-opacity-75 p-5 ">
+                                <h2 class=" text-danger mt-4">Ainda não tem faixas cadastradas</h2>
+                                <li class="nav-item active btn btn-success btn-lg text-right mt-5">
+                                    <a class="nav-link" href="{{ route('faixa.create') }}">Clique aqui para cadastrar</a>
+                                </li>
+                            </div>    
+                        @endif    
                 @else   
+                    @if($faixas->isEmpty())
+                    {{-- Tirando barra de pesquisa caso não tenha registros--}}
+                    @else
+                        <div class="bg-light p-3" >
+                            <form action="{{ route('faixa-pesquisa') }}" method="post" class="d-flex  bg-light">
+                                @csrf
+                                <div class="input-group">
+                                    <input class="form-control" type="search" name="termo_pesquisa" placeholder="Digite sua pesquisa" aria-label="Pesquisar">
+                                    <button class="btn btn-primary" type="submit">Pesquisar</button>
+                                </div>
+                            </form>
+                        </div>
+                    @endif
                     {{--  SE TIVER REGISTROS --}}  
                     <table class="bg-light table table-striped table-bordered mb-3">
                             <thead>

@@ -15,7 +15,7 @@ class FaixaController extends Controller
     {
         
         //Colocando páginação de até 10 álbuns por tela
-        $faixas = Faixa::paginate(10);
+        $faixas = Faixa::where("nome", "like", "%".$request->input("termo_pesquisa")."%")->paginate(5);
         return view("faixa.index", ["faixas" => $faixas, "request" => $faixas->all()]);
     }
 

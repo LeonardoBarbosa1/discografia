@@ -13,16 +13,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Rotas para home
-Route::get("/", "App\Http\Controllers\HomeController@index")->name('home');
 
-//Rotas para barra de pesquisa
-Route::get("/home", "App\Http\Controllers\HomeController@index")->name('home-pesquisa');
-Route::post("/home", "App\Http\Controllers\HomeController@index")->name('home-pesquisa');
+Route::group(['prefix' => '/'], function () {
+    Route::get("/", "App\Http\Controllers\HomeController@index")->name('home');
+    //Rotas para barra de pesquisa
+    Route::get("/pesquisa", "App\Http\Controllers\HomeController@index")->name('home-pesquisa');
+    Route::post("/pesquisa", "App\Http\Controllers\HomeController@index")->name('home-pesquisa');
+});
 
 
 Route::resource("/album", "App\Http\Controllers\AlbumController");
+//Rotas para barra de pesquisa
+Route::group(['prefix' => 'album'], function () {
+    Route::get("/pesquisa", "App\Http\Controllers\AlbumController@index")->name('album-pesquisa');
+    Route::post("/pesquisa", "App\Http\Controllers\AlbumController@index")->name('album-pesquisa');
+});
+
 Route::resource("/faixa", "App\Http\Controllers\FaixaController");
+//Rotas para barra de pesquisa
+Route::group(['prefix' => 'faixa'], function () {
+    Route::get("/pesquisa", "App\Http\Controllers\FaixaController@index")->name('faixa-pesquisa');
+    Route::post("/pesquisa", "App\Http\Controllers\FaixaController@index")->name('faixa-pesquisa');
+});
 
 //redirecionando para a home caso o caminho acessado não esteja definido
 Route::fallback(function(){
