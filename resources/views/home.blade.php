@@ -55,15 +55,16 @@
                     @if($albuns->isEmpty())
                     {{-- Tirando barra de pesquisa caso não tenha registros--}}
                     @else
-                        <div>
-                            <form action="{{ route('home-pesquisa') }}" method="post" class="d-flex">
+                        <div> 
+                            <form action="{{ route('home-pesquisa') }}" method="post">
                                 @csrf
-                                <div class="input-group">
-                                    <input class="form-control rounded" type="search" name="termo_pesquisa" placeholder="Digite sua pesquisa" aria-label="Pesquisar">
-                                    <button class="btn btn-primary btn-custom" type="submit">Pesquisar</button>
+                                <p class="palavra-chave">Dígite uma palavra chave </p>
+                                <div class="d-flex">
+                                    <input class="barra" type="search" name="termo_pesquisa" placeholder="Digite sua pesquisa" aria-label="Pesquisar">
+                                    <button class="btn-rounded" type="submit">Pesquisar</button>
                                 </div>
                             </form>
-                        </div>
+                        </div>  
                     @endif
 
                     {{-- VERIFICANDO SE TEM REGISTROS EM $albuns--}}
@@ -73,16 +74,20 @@
                         {{-- Verificando se é uma pesquisa --}}
                         @if(Route::currentRouteName() == "home-pesquisa")  
                             {{-- Se for... Pesquisa não encontrada --}}
-                            <div>
-                                <form action="{{ route('home-pesquisa') }}" method="post" class="d-flex">
+                            <div> 
+                                <form action="{{ route('home-pesquisa') }}" method="post">
                                     @csrf
-                                    <div class="input-group">
-                                        <input class="form-control rounded" type="search" name="termo_pesquisa" placeholder="Digite sua pesquisa" aria-label="Pesquisar">
-                                        <button type="submit">Pesquisar</button>
+                                    <p class="palavra-chave">Dígite uma palavra chave </p>
+                                    <div class="d-flex">
+                                        <input class="barra" type="search" name="termo_pesquisa" placeholder="Digite sua pesquisa" aria-label="Pesquisar">
+                                        <button class="btn-rounded" type="submit">Pesquisar</button>
                                     </div>
                                 </form>
-                            </div>  
+                            </div>
                             <h2 class=" text-danger mt-4">Pesquisa não encontrada</h2>
+                            <li class="nav-item active btn btn-secondary btn-lg btn-dark text-right p-1 mt-2 ">
+                                <a class="nav-link" href="{{ route('home') }}">Voltar</a>
+                            </li>
                              
                         @else   
                             {{-- Se não for uma pesquisa... Ainda não tem álbuns cadastrados --}}
@@ -108,14 +113,11 @@
                                         
                                     @else
                                         <tr>
-                                           <th>
+                                           <td>
                                                 <span style="margin-right: 30px;">Nº</span>
                                                 <span>Faixa</span>
-                                            </th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th>Duração</th>
+                                            </td>
+                                            <td style="text-align: right;">Duração</td>
                                         </tr>
                                         @foreach ($faixas as $faixa)
                                             @if ($faixa->album_id == $album->id)
@@ -124,10 +126,7 @@
                                                         <span style="margin-right: 30px;">{{ $faixa->id }}</span>
                                                         <span>{{ $faixa->nome }}</span>
                                                     </td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td>{{ $faixa->duracao }}</td>
+                                                    <td style="text-align: right;">{{ $faixa->duracao }}</td>
                                                 </tr>
                                             @endif
                                         @endforeach

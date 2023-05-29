@@ -15,7 +15,7 @@ class FaixaController extends Controller
     {
         
         //Colocando páginação de até 10 álbuns por tela
-        $faixas = Faixa::where("nome", "like", "%".$request->input("termo_pesquisa")."%")->paginate(5);
+        $faixas = Faixa::where("nome", "like", "%".$request->input("termo_pesquisa")."%")->paginate(10);
         return view("faixa.index", ["faixas" => $faixas, "request" => $faixas->all()]);
     }
 
@@ -47,7 +47,7 @@ class FaixaController extends Controller
             "nome.min" => "O campo Nome precisa ter no mínimo 3 caracteres",
             'nome.max' => "O campo Nome deve ter no máximo 40 caracteres",
 
-            "duracao.min" => "O campo duração está incorreto!",
+            "duracao.min" => "O campo duração está incorreto. deve ter 4 números!",
 
             "album_id.exists" => "o Álbum informado não é válido"
         ];

@@ -21,7 +21,6 @@ Route::group(['prefix' => '/'], function () {
     Route::post("/pesquisa", "App\Http\Controllers\HomeController@index")->name('home-pesquisa');
 });
 
-
 Route::resource("/album", "App\Http\Controllers\AlbumController");
 //Rotas para barra de pesquisa
 Route::group(['prefix' => 'album'], function () {

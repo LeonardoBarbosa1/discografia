@@ -63,14 +63,18 @@
                         @if(Route::currentRouteName() == "album-pesquisa")  
                             {{-- Se for... Pesquisa não encontrada --}}
                             <div class="bg-light p-3 ">
-                                <form action="{{ route('album-pesquisa') }}" method="post" class="d-flex bg-light">
+                                <form action="{{ route('album-pesquisa') }}" method="post">
                                     @csrf
-                                    <div class="input-group">
-                                        <input class="form-control rounded" type="search" name="termo_pesquisa" placeholder="Digite sua pesquisa" aria-label="Pesquisar">
-                                        <button  class="btn btn-primary"  type="submit">Pesquisar</button>
+                                    <p class="palavra-chave">Dígite uma palavra chave </p>
+                                    <div class="d-flex">
+                                        <input class="barra-album-faixa" type="search" name="termo_pesquisa" placeholder="Digite sua pesquisa" aria-label="Pesquisar">
+                                        <button class="btn-rounded" type="submit">Pesquisar</button>
                                     </div>
                                 </form>
                                 <h2 class=" mt-4 text-danger ">Pesquisa não encontrada</h2>
+                                <li class="nav-item active btn btn-secondary btn-lg btn-dark text-right p-1 mt-2 ">
+                                    <a class="nav-link" href="{{ route('album.index') }}">Voltar</a>
+                                </li>
                              </div> 
                              
                         @else   
@@ -87,11 +91,12 @@
                     {{-- Tirando barra de pesquisa caso não tenha registros--}}
                     @else
                         <div class="bg-light p-3" >
-                            <form action="{{ route('album-pesquisa') }}" method="post" class="d-flex  bg-light">
+                            <form action="{{ route('album-pesquisa') }}" method="post">
                                 @csrf
-                                <div class="input-group">
-                                    <input class="form-control" type="search" name="termo_pesquisa" placeholder="Digite sua pesquisa" aria-label="Pesquisar">
-                                    <button class="btn btn-primary" type="submit">Pesquisar</button>
+                                <p class="palavra-chave">Dígite uma palavra chave </p>
+                                <div class="d-flex">
+                                    <input class="barra-album-faixa" type="search" name="termo_pesquisa" placeholder="Digite sua pesquisa" aria-label="Pesquisar">
+                                    <button class="btn-rounded" type="submit">Pesquisar</button>
                                 </div>
                             </form>
                         </div>

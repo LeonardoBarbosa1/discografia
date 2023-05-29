@@ -32,3 +32,47 @@
     border-radius: 5px;
 }
 
+
+.btn-rounded {
+    border-radius: 50px; /* Ajuste o valor do border-radius para controlar o grau de arredondamento */
+    border: none;
+    background-color: #0a8eb6;
+    color: #fff;
+    padding: 7px 24px; /* Ajuste o tamanho do padding para controlar o tamanho do botão */
+    font-size: 16px; 
+    text-align: right;
+}
+.barra {
+    width: 400px;
+    border-radius: 50px; /* Ajuste o valor do border-radius para controlar o grau de arredondamento */
+    border: 1px solid #979a9b;
+    background-color: #fff;
+    color: rgb(88, 87, 87);
+    margin-right: 20px; 
+    padding: 10px; 
+}
+.barra:focus {
+    outline: none; /* Remove a borda de foco padrão */
+    border: 1px solid #0a8eb6; /* Defina a cor e a espessura da borda ao clicar */
+}
+
+
+.palavra-chave {
+    color: rgb(88, 87, 87);
+}
+
+
+.barra-album-faixa {
+    width: 455px;
+    border-radius: 50px; /* Ajuste o valor do border-radius para controlar o grau de arredondamento */
+    border: 1px solid #979a9b;
+    background-color: #fff;
+    color: rgb(88, 87, 87);
+    margin-right: 20px; 
+    padding: 10px; 
+}
+.barra-album-faixa:focus {
+    outline: none; /* Remove a borda de foco padrão */
+    border: 1px solid #0a8eb6; /* Defina a cor e a espessura da borda ao clicar */
+}
+

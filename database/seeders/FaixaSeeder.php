@@ -12,6 +12,6 @@ class FaixaSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Faixa::factory()->count(100)->create();
+        \App\Models\Faixa::factory()->count(500)->create();
     }
 }
