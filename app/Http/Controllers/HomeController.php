@@ -20,7 +20,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {                               
-        $albuns = Album::where("nome", "like", "%".$request->input("termo_pesquisa")."%")->paginate(5);
+        $albuns = Album::where("nome", "like", "%".$request->input("termo_pesquisa")."%")->paginate(10);
 
         $faixas = Faixa::whereIn("album_id", $albuns->pluck('id'))->get();
 
