@@ -42,20 +42,20 @@
             <div class="col-6">
 
 
-                <div class="bg-light p-4 d-flex justify-content-between align-items-center">
+                <div class="bg-light p-2 d-flex justify-content-between align-items-center">
                     <div>
                         <img src="{{ asset('img/logo.png') }}">
                     </div>
                     <div class="h1 text-right">Discografia</div>
                 </div>
 
-                <div class="bg-light bg-opacity-75 p-5 ">
+                <div class="bg-light bg-opacity-75 p-4 ">
 
 
                     @if($albuns->isEmpty())
                     {{-- Tirando barra de pesquisa caso não tenha registros--}}
                     @else
-                        <div> 
+                        <div class="mb-4"> 
                             <form action="{{ route('home-pesquisa') }}" method="post">
                                 @csrf
                                 <p class="palavra-chave">Dígite uma palavra chave </p>

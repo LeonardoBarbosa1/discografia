@@ -48,7 +48,7 @@
             <div class="col-6">
 
 
-                <div class="bg-light p-4 d-flex justify-content-between align-items-center">
+                <div class="bg-light p-2 d-flex justify-content-between align-items-center">
                     <div>
                         <img src="{{ asset('img/logo.png') }}">
                     </div>

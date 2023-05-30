@@ -18,6 +18,7 @@
         .bg-image {
             background: url('{{ asset('img/background.png') }}') no-repeat center center fixed;
             background-size: cover;
+            
         }
     </style>
      <link rel="stylesheet" href="{{asset('css/styles.css')}}">
