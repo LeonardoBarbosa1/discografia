@@ -13,9 +13,7 @@ class FaixaController extends Controller
      */
     public function index(Request $request)
     {
-        
-        //Colocando páginação de até 10 álbuns por tela
-        $faixas = Faixa::where("nome", "like", "%".$request->input("termo_pesquisa")."%")->paginate(10);
+        $faixas = Faixa::where("nome", "like", "%".$request->input("termo_pesquisa")."%")->paginate(10); // paginate(10) Colocando páginação de até 10 álbuns por tela
         return view("faixa.index", ["faixas" => $faixas, "request" => $faixas->all()]);
     }
 

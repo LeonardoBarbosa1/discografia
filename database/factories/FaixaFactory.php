@@ -18,9 +18,9 @@ class FaixaFactory extends Factory
     {
         return [
             'nome' => fake()->name(),
-            'duracao' => fake()->numerify('##:##'),
+            'duracao' => fake()->numerify('##:##'), //numerify() substitui os caracteres especiais # por dígitos numéricos aleatórios.
             'album_id' => function () {
-                return Album::inRandomOrder()->first()->id;
+                return Album::inRandomOrder()->first()->id; //A Função inRandomOrder() está selecionando todos os registros da tabela de álbuns, mas em uma ordem aleatória
             },
         ];
     }

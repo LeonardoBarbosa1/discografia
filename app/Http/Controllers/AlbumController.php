@@ -12,8 +12,8 @@ class AlbumController extends Controller
      */
     public function index(Request $request)
     {
-        //Colocando páginação de até 10 álbuns por tela
-        $albuns = Album::where("nome", "like", "%".$request->input("termo_pesquisa")."%")->paginate(10);
+        
+        $albuns = Album::where("nome", "like", "%".$request->input("termo_pesquisa")."%")->paginate(10); // paginate(10) Colocando páginação de até 10 álbuns por tela
 
         return view("album.index", ["albuns" => $albuns, "request" => $request->all()]);
     }

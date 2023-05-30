@@ -12,6 +12,6 @@ class AlbumSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Album::factory()->count(500)->create();
+        \App\Models\Album::factory()->count(500)->create(); //Cria 500 registros de álbum fictícios para fins de teste no banco de dados
     }
 }
