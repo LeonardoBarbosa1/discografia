@@ -66,7 +66,7 @@
                             </form>
                         </div>  
                     @endif
-
+                    
                     {{-- VERIFICANDO SE TEM REGISTROS EM $albuns--}}
                     @if($albuns->isEmpty()) {{-- Se $albuns estiver vazío --}}
                     

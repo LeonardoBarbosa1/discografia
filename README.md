@@ -1,5 +1,8 @@
 # Passo-a-passa para rodar o projeto Discografia
 
+### Certifique-se que o git esteja instalado
+-Abra o terminal/cmd e digite: git -v
+- Caso não esteja instalado, <a href="https://git-scm.com/downloads" target="_blank">Clique Aqui</a><br>
 
 ### 1- Precisa o PHP instalado e configurado<br>
 -<a href="https://dev.to/marcelochia/instalando-o-php-8-no-windows-237m" target="_blank">instalação e configuração do php</a><br>
